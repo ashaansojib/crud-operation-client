@@ -4,6 +4,7 @@ import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Main from './layout/Main.jsx'
 import Home from './layout/Home.jsx'
+import ServerMethdos from './pages/ServerMethdos'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>
+      },
+      {
+        path: '/server-methods',
+        element: <ServerMethdos></ServerMethdos>
       }
     ]
   }
