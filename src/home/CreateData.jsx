@@ -10,20 +10,22 @@ const CreateData = () => {
         const image = form.image.value;
         const date = form.date.value;
         const result = { name, quantity, image, date }
-        
-        fetch('http://localhost:9988/books', {
+
+        fetch('http://localhost:9988/cruds', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(result)
         })
-            .then(res => res.json())
-            .then(data => {
-                alert('data collect')
-                form.reset();
-                console.log(data)
-            })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+            if(data.acknowledged){
+                alert('the product added on mongodb')
+            }
+        })
+        form.reset()
     }
     return (
         <div className="card-body w-[550px] mx-auto">
@@ -32,7 +34,7 @@ const CreateData = () => {
                     <label className="label">
                         <span className="label-text">Name</span>
                     </label>
-                    <input type="text" name='name' placeholder="email" className="input input-bordered" />
+                    <input type="text" name='name' placeholder="name" className="input input-bordered" />
                 </div>
                 <div className="form-control">
                     <label className="label">
